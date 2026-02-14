@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import Admin from "@/pages/Admin";
 import NotFound from "@/pages/not-found";
+import { useEffect } from "react";
 
 function Router() {
   return (
@@ -18,6 +19,15 @@ function Router() {
 }
 
 function App() {
+  useEffect(() => {
+    // Vapi configuration
+    const vapiPublicKey = "c19b7909-74f0-459f-a23c-ff4cf3d9cbe6";
+    const assistantId = "517b20fd-d5b4-40b6-a9f8-57f6d1580f1c";
+    
+    // Add Vapi call to window for global access if needed, or manage via state/context
+    // For now, we'll just ensure the script is loaded via index.html
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

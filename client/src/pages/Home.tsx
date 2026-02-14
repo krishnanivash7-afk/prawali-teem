@@ -1,3 +1,7 @@
+import product1 from "@assets/WhatsApp_Image_2026-02-1_1771072165821.jpeg";
+import product2 from "@assets/WhatsApp_Image_2026-02-13_at_6.45.12_PM_1771072177929.jpeg";
+import product3 from "@assets/WhatsApp_Image_2026-02-13_at_6.45.13_PM_1771072190940.jpeg";
+import product4 from "@assets/WhatsApp_Image_2026-02-13_at_6.45.14_PM_1771072200908.jpeg";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -6,6 +10,29 @@ import { ArrowRight, Leaf, Recycle, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const products = [
+    {
+      img: product1,
+      title: "Eco-Friendly Plate",
+      desc: "Sustainable tableware for every occasion"
+    },
+    {
+      img: product2,
+      title: "Tea Container",
+      desc: "Keep your tea fresh naturally"
+    },
+    {
+      img: product3,
+      title: "Eco Tumbler",
+      desc: "Durable and stylish hydration"
+    },
+    {
+      img: product4,
+      title: "Daily Use Cups",
+      desc: "Perfect for your morning routine"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
@@ -49,10 +76,8 @@ export default function Home() {
                 className="relative"
               >
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border-4 border-white">
-                  {/* Hero Image - Scenic nature/landscape */}
-                  {/* scenic landscape green hills sunlight */}
                   <img 
-                    src="https://pixabay.com/get/g398a80c52959ab9cbf1af1779fd9eb73d1c0b87a8e42c906de4e9b8d314a8496b04a0e4a8bef30a1645bf335643940653f73c1ae63d4cce02c49daf9ef2eef9f_1280.jpg" 
+                    src={product1} 
                     alt="Sustainable Future" 
                     className="w-full h-[500px] object-cover"
                   />
@@ -63,7 +88,6 @@ export default function Home() {
                   </div>
                 </div>
                 
-                {/* Decorative blobs */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-3xl"></div>
                 <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
               </motion.div>
@@ -118,48 +142,33 @@ export default function Home() {
         {/* Product Gallery */}
         <section id="product" className="py-24 bg-secondary/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row gap-12 items-center">
-              <div className="w-full md:w-1/2">
-                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square bg-white flex items-center justify-center p-8 group">
-                  {/* Placeholder for Product Bottle */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* eco friendly glass bottle mockup */}
-                  <img 
-                    src="https://pixabay.com/get/g1827a3ef74e11f137afbfd07b60b6e1d65ac54faeafad6b751f8ee95e3b0e03c1f73d0fcf3103dea474dba039f4d574a8dac5f63a2c735c831e05d0b1d979c47_1280.jpg"
-                    alt="Eco Bottle"
-                    className="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700"
-                  />
-                  
-                  <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-lg">
-                    <p className="font-bold text-foreground">Eco-Bottle Series</p>
-                    <p className="text-xs text-muted-foreground">Made from recycled materials</p>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4">Product Gallery</h2>
+              <p className="text-muted-foreground">Explore our range of eco-friendly products crafted from agricultural waste.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {products.map((product, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={product.img} 
+                      alt={product.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
-                </div>
-              </div>
-              
-              <div className="w-full md:w-1/2 space-y-6">
-                <h2 className="text-3xl lg:text-4xl font-display font-bold">Sustainable Packaging Solutions</h2>
-                <p className="text-muted-foreground text-lg">
-                  Our flagship product line features durable, reusable, and eventually biodegradable containers designed to replace single-use plastics in the beverage industry.
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    "100% Plant-based materials",
-                    "Carbon negative production process",
-                    "Durable yet compostable",
-                    "Supports local farmers"
-                  ].map((feat, i) => (
-                    <li key={i} className="flex items-center gap-3 font-medium text-foreground">
-                      <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-                <Button className="mt-4 eco-gradient text-white rounded-full px-8 py-6 h-auto text-lg">
-                  View Catalogue
-                </Button>
-              </div>
+                  <div className="p-6">
+                    <h3 className="font-bold text-lg mb-1">{product.title}</h3>
+                    <p className="text-sm text-muted-foreground">{product.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>

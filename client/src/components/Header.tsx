@@ -1,3 +1,4 @@
+import logo from "@assets/WhatsApp_Image_2026-02-13_at_6.45.15_PM_1771072217382.jpeg";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -13,9 +14,7 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="h-10 w-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20">
-              P
-            </div>
+            <img src={logo} alt="Prawali Logo" className="h-10 w-auto" />
             <span className="font-display font-bold text-2xl text-foreground tracking-tight">
               Prawali
             </span>
