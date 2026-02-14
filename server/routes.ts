@@ -11,17 +11,20 @@ export async function registerRoutes(
   
   app.post(api.leads.create.path, async (req, res) => {
     try {
-      const input = api.leads.create.input.parse(req.body);
-      const lead = await storage.createLead(input);
-      res.status(201).json(lead);
-    } catch (err) {
-      if (err instanceof z.ZodError) {
-        return res.status(400).json({
-          message: err.errors[0].message,
-          field: err.errors[0].path.join('.'),
+      const { name, phone, location } = req.body;
+      if (name && phone && location) {
+        const lead = await storage.createLead({
+          name,
+          phone,
+          location,
+          source: req.body.source || "web"
         });
+        res.status(200).json({ message: "Lead saved!" });
+      } else {
+        res.status(400).json({ error: "Missing data" });
       }
-      res.status(500).json({ message: "Internal server error" });
+    } catch (err) {
+      res.status(500).json({ error: "Internal server error" });
     }
   });
 
