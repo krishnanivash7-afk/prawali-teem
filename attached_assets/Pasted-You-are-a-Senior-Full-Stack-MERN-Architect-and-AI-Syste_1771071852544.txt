@@ -1,0 +1,86 @@
+You are a Senior Full-Stack MERN Architect and AI Systems Engineer.
+
+Build a COMPLETE production-ready startup website for brand "Prawali" (eco-friendly rice husk products).
+
+STRICT RULES:
+- Zero syntax errors.
+- All imports must be case-sensitive.
+- All strings must be properly closed.
+- No unused variables.
+- No broken routes.
+- Code must run immediately after `npm install` and `npm run dev`.
+- If any file/folder does not exist, create it automatically.
+- Add fallback placeholders for missing images to avoid runtime crash.
+
+PROJECT TYPE:
+React + Vite (Frontend)
+Node + Express (Backend)
+In-memory storage (no MongoDB required initially)
+Clean folder structure.
+
+THEME:
+Eco Green professional theme
+Modern startup UI
+Soft shadows, rounded cards, responsive layout.
+
+SECTIONS REQUIRED:
+1. Header (logo placeholder src/assets/logo.png)
+2. Hero Section (Title: "From Waste to Wonder")
+3. ProductGallery (use src/assets/bottle.jpg with fallback box)
+4. FoundersVision section
+5. Footer
+6. Floating ChatWidget (bottom-right)
+7. AI Voice Button (Start Riley AI)
+
+AI VOICE INTEGRATION:
+- Add Vapi SDK script in index.html
+- In App.jsx create function startVapiCall()
+- Public Key: c19b7909-74f0-459f-a23c-ff4cf3d9cbe6
+- Assistant ID: 517b20fd-d5b4-40b6-a9f8-57f6d1580f1c
+- Voice assistant must collect:
+    Name
+    Phone
+    Location (Punjab or Bihar only)
+
+CHATBOT LEAD CAPTURE:
+Create ChatWidget.jsx
+Must collect:
+- Name
+- Phone
+- Location (Punjab/Bihar dropdown)
+Validate phone number (10 digits)
+Send data to backend via POST /api/leads
+
+BACKEND:
+Express server
+Route:
+POST /api/leads
+GET /api/leads
+Store leads in memory array
+
+ADMIN DASHBOARD:
+Create private route:
+    /admin-prawali
+Display all leads in clean responsive table.
+Password protect with simple frontend password check.
+
+IMAGE HANDLING:
+If logo.png or bottle.jpg missing:
+Display styled placeholder box.
+
+SECURITY:
+- Sanitize input.
+- Prevent empty form submit.
+- Use try/catch everywhere.
+- No console errors.
+- No build warnings.
+
+DELIVERABLE:
+Provide:
+- Complete folder structure
+- All files code
+- Setup instructions
+- Deployment instructions (Vercel)
+- Domain connect instructions
+
+Return FULL project in one response.
