@@ -40,3 +40,7 @@ export const api = {
     },
   },
 };
+
+export type LeadInput = z.infer<typeof api.leads.create.input>;
+export type LeadResponse = z.infer<typeof api.leads.create.responses[201]>;
+export type InsertLead = LeadInput;
