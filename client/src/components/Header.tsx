@@ -9,28 +9,27 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border/40">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border/40 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 group transition-transform hover:scale-105">
             <img src={logo} alt="Prawali Logo" className="h-10 w-auto" />
-            <span className="font-display font-bold text-2xl text-foreground tracking-tight">
+            <span className="font-display font-bold text-2xl text-[#065f46] tracking-tight">
               Prawali
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#vision" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Our Vision</a>
-            <a href="#product" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Products</a>
-            <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
+            <a href="#vision" className="text-sm font-semibold text-muted-foreground hover:text-[#065f46] transition-colors">Our Vision</a>
+            <a href="#product" className="text-sm font-semibold text-muted-foreground hover:text-[#065f46] transition-colors">Products</a>
+            <a href="#contact" className="text-sm font-semibold text-muted-foreground hover:text-[#065f46] transition-colors">Contact</a>
             <Link href="/admin-prawali">
-              <Button variant="ghost" className="text-sm font-medium">Admin</Button>
+              <Button variant="outline" className="text-sm font-bold border-[#065f46] text-[#065f46] hover:bg-[#065f46] hover:text-white transition-all">
+                Admin
+              </Button>
             </Link>
-            <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-md shadow-primary/20">
-              Join Us
-            </Button>
           </nav>
 
           {/* Mobile Menu Button */}

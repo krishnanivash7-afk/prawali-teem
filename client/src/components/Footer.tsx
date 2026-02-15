@@ -26,11 +26,10 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="font-bold text-foreground mb-4">Contact</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="font-bold text-foreground mb-4 text-[#065f46]">Contact</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground font-medium">
               <li>info@prawali.com</li>
-              <li>+91 987 654 3210</li>
-              <li>Punjab, India</li>
+              <li>Location: Punjab & Bihar, India</li>
             </ul>
           </div>
 

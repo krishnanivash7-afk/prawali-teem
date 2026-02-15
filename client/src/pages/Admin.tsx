@@ -50,7 +50,7 @@ export default function Admin() {
               <LayoutDashboard />
             </div>
             <h1 className="text-2xl font-display font-bold">Admin Access</h1>
-            <p className="text-muted-foreground text-sm mt-1">Enter password to view leads</p>
+            <p className="text-emerald-600 font-bold text-sm mt-1 uppercase tracking-wider">Status: Live - Leads from Punjab & Bihar</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <Input
