@@ -24,7 +24,7 @@ export default function Admin() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === "admin123") {
+    if (password === "prawali2026") {
       setIsAuthenticated(true);
     } else {
       alert("Incorrect password");

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
-import { ArrowRight, Leaf, Recycle, Droplets } from "lucide-react";
+import { Leaf, Recycle, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
