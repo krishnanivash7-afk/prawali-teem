@@ -20,12 +20,20 @@ function Router() {
 
 function App() {
   useEffect(() => {
-    // Vapi configuration
-    const vapiPublicKey = "c19b7909-74f0-459f-a23c-ff4cf3d9cbe6";
-    const assistantId = "517b20fd-d5b4-40b6-a9f8-57f6d1580f1c";
-    
-    // Add Vapi call to window for global access if needed, or manage via state/context
-    // For now, we'll just ensure the script is loaded via index.html
+    // Calling AI ko window par set karna taaki Home page se access ho sake
+    window.startRileyCall = () => {
+      if (window.vapiSDK) {
+        const vapi = new window.vapiSDK.default(
+          "c19b7909-74f0-459f-a23c-ff4cf3d9cbe6",
+        );
+        vapi.start("517b20fd-d5b4-40b6-a9f8-57f6d1580f1c");
+        console.log("Riley AI calling started...");
+      } else {
+        alert(
+          "Riley AI load ho rahi hai, please 5 second baad fir se try karein ya refresh karein.",
+        );
+      }
+    };
   }, []);
 
   return (

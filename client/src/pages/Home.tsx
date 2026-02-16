@@ -5,169 +5,191 @@ import product4 from "@assets/WhatsApp_Image_2026-02-13_at_6.45.14_PM_1771072200
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ChatWidget } from "@/components/ChatWidget";
-import { Leaf, Recycle, Heart } from "lucide-react";
+import { PhoneCall, Leaf, Sprout } from "lucide-react"; // Icons added
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const startRileyCall = () => {
-    if (window.vapiSDK?.default) {
-      const vapi = new window.vapiSDK.default("c19b7909-74f0-459f-a23c-ff4cf3d9cbe6");
+    // Ye code direct Riley AI ko call lagayega
+    if (window && (window as any).vapiSDK) {
+      const vapi = new (window as any).vapiSDK.default(
+        "c19b7909-74f0-459f-a23c-ff4cf3d9cbe6",
+      );
       vapi.start("517b20fd-d5b4-40b6-a9f8-57f6d1580f1c");
     } else {
-      console.error("Vapi SDK not loaded");
+      alert("Riley AI load ho rahi hai, please refresh karein!");
     }
   };
 
+  // Updated Product List with Prices & Better Descriptions
   const products = [
     {
       img: product1,
-      title: "Premium Rice Husk Plate",
-      desc: "Elegantly crafted from 100% natural rice husk"
+      title: "Rice Husk Dinner Plate",
+      price: "₹199",
+      desc: "Sturdy, washable, and 100% natural. Made from farm waste to save the air.",
     },
     {
       img: product2,
-      title: "Natural Tea Container",
-      desc: "Keep your beverages fresh and aromatic"
+      title: "Eco-Storage Container",
+      price: "₹249",
+      desc: "Airtight & moisture-free. Keep your tea and spices fresh without plastic.",
     },
     {
       img: product3,
-      title: "Eco-Friendly Tumbler",
-      desc: "Sleek design for sustainable hydration"
+      title: "Earth Coffee Cup",
+      price: "₹149",
+      desc: "Heat resistant and unbreakable. Sip your coffee responsibly.",
     },
     {
       img: product4,
-      title: "Artisan Coffee Cups",
-      desc: "The perfect sustainable morning companion"
-    }
+      title: "Sustainable Tumbler",
+      price: "₹299",
+      desc: "Your daily travel companion. Zero plastic, 100% style.",
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col font-sans">
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col font-sans overflow-x-hidden">
       <Header />
-      
       <main className="flex-grow pt-16">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-24 lg:py-40 bg-[#f8fafc]">
-          <div className="absolute inset-0 z-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#065f46] to-transparent"></div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        
+        {/* HERO SECTION - Focus on Prawali Brand */}
+        <section className="relative py-20 lg:py-32 px-4 overflow-hidden">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-6xl lg:text-8xl font-display font-extrabold leading-tight text-slate-900 mb-8 tracking-tighter">
-                From <span className="text-[#065f46]">Waste</span> to <span className="text-[#065f46]/80">Wonder</span>
+              <h1 className="text-5xl lg:text-7xl font-black text-[#1a3c34] mb-6 leading-tight">
+                From <span className="text-[#eab308]">Parali</span> <br/>
+                to <span className="text-[#065f46]">Pride.</span>
               </h1>
-              <p className="text-xl lg:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-                Transforming agricultural waste into premium eco-friendly tableware. Join us in our journey towards a sustainable future.
+              <p className="text-xl text-slate-600 mb-8 max-w-lg leading-relaxed">
+                We don't just sell products; we solve pollution. 
+                **Prawali** transforms agricultural waste (Rice Husk) into 
+                premium, unbreakable daily essentials.
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button 
-                  onClick={startRileyCall}
-                  size="lg" 
-                  className="rounded-full bg-[#065f46] hover:bg-[#044e3a] text-white shadow-xl text-xl px-10 h-16 font-bold transition-all hover:scale-105"
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}
+                  size="lg"
+                  className="rounded-full bg-[#065f46] hover:bg-[#044e3a] text-white px-8 h-14 text-lg font-bold shadow-lg"
                 >
-                  Talk to AI Expert (Riley)
+                  Shop Now
                 </Button>
-                <Button 
-                  asChild
-                  size="lg" 
-                  variant="outline" 
-                  className="rounded-full border-2 border-[#065f46] text-[#065f46] hover:bg-[#065f46] hover:text-white text-xl px-10 h-16 font-bold transition-all hover:scale-105"
+                <Button
+                  onClick={startRileyCall}
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-[#065f46] text-[#065f46] hover:bg-[#065f46]/10 px-8 h-14 text-lg font-bold"
                 >
-                  <a href="#product">Explore Products</a>
+                  <PhoneCall className="mr-2 h-5 w-5" /> Talk to AI
                 </Button>
               </div>
+            </motion.div>
+
+            {/* Hero Image Animation */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative z-10"
+            >
+               <div className="absolute inset-0 bg-[#eab308]/20 rounded-full blur-3xl transform rotate-12 -z-10"></div>
+               <img 
+                 src={product1} 
+                 alt="Rice Husk Plate" 
+                 className="rounded-[40px] shadow-2xl w-full max-w-md mx-auto transform hover:-rotate-2 transition-transform duration-500"
+               />
             </motion.div>
           </div>
         </section>
 
-        {/* Vision Section */}
-        <section id="vision" className="py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <div>
-                <h2 className="text-4xl lg:text-5xl font-display font-bold mb-8 text-slate-900">Our Vision & Mission</h2>
-                <p className="text-lg text-slate-600 leading-relaxed mb-10">
-                  Prawali is dedicated to reducing agricultural waste by repurposing rice husk into premium, durable, and biodegradable products. We focus on innovation and sustainability to create a better planet.
+        {/* TECHNOLOGY SECTION - Startly vs Prawali */}
+        <section className="py-20 bg-white border-y border-slate-100">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="text-[#eab308] font-bold tracking-widest uppercase text-sm">Powered by Science</span>
+              <h2 className="text-4xl font-bold text-[#1a3c34] mt-2">Startly Innovations™ Technology</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Box 1: Corn Tech */}
+              <div className="bg-[#FDFBF7] p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition-all">
+                <div className="h-14 w-14 bg-green-100 rounded-full flex items-center justify-center mb-6 text-green-700">
+                  <Leaf size={28} />
+                </div>
+                <h4 className="text-2xl font-bold text-[#1a3c34] mb-3">Biodegradable Plastic</h4>
+                <p className="text-slate-600 leading-relaxed">
+                  Our parent company, **Startly Innovations**, creates bio-polymers using **Corn Starch**. 
+                  Unlike regular plastic, our material completely decomposes in soil within just **180 Days**.
                 </p>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#065f46]/10 p-3 rounded-xl"><Recycle className="text-[#065f46]" /></div>
-                    <div>
-                      <h4 className="font-bold text-lg">Waste Reduction</h4>
-                      <p className="text-slate-500">Transforming rice husk into valuable resources.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#065f46]/10 p-3 rounded-xl"><Leaf className="text-[#065f46]" /></div>
-                    <div>
-                      <h4 className="font-bold text-lg">Eco Innovation</h4>
-                      <p className="text-slate-500">Leading the way in sustainable product design.</p>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <div className="relative">
-                <div className="rounded-3xl overflow-hidden shadow-2xl">
-                  <img src={product1} alt="Vision" className="w-full h-[600px] object-cover" />
+
+              {/* Box 2: Rice Husk Tech */}
+              <div className="bg-[#FDFBF7] p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition-all">
+                <div className="h-14 w-14 bg-yellow-100 rounded-full flex items-center justify-center mb-6 text-yellow-700">
+                  <Sprout size={28} />
                 </div>
+                <h4 className="text-2xl font-bold text-[#1a3c34] mb-3">Rice Husk Upcycling</h4>
+                <p className="text-slate-600 leading-relaxed">
+                  **Prawali** focuses on the "Parali" problem. We collect rice husk directly from farmers 
+                  (preventing smoke) and bind it into sturdy, heat-resistant products for your home.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Product Gallery */}
-        <section id="product" className="py-32 bg-[#f8fafc]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6 text-slate-900">Premium Collection</h2>
-              <div className="w-24 h-1 bg-[#065f46] mx-auto"></div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-              {products.map((product, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ y: -10 }}
-                  className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 transition-all"
-                >
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <img 
-                      src={product.img} 
-                      alt={product.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+        {/* Product Grid */}
+        <section id="product" className="py-20 max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-4 text-[#1a3c34]">
+            Our Premium Collection
+          </h2>
+          <p className="text-center text-slate-500 mb-16 max-w-2xl mx-auto">
+            Sustainable luxury for your everyday life.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map((p, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="h-64 overflow-hidden bg-gray-50 relative">
+                   <img
+                    src={p.img}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-[#065f46]">
+                    Eco-Friendly
                   </div>
-                  <div className="p-8">
-                    <h3 className="font-bold text-xl mb-2 text-slate-900">{product.title}</h3>
-                    <p className="text-slate-500 text-sm mb-6">{product.desc}</p>
-                    <Button className="w-full bg-[#065f46] hover:bg-[#044e3a] text-white rounded-xl py-6 font-bold shadow-lg shadow-[#065f46]/10 transition-transform active:scale-95">
-                      Buy Now
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-1 text-[#1a3c34]">
+                    {p.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs mb-4 min-h-[40px]">
+                    {p.desc}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-2 border-t border-slate-100">
+                    <span className="text-xl font-bold text-[#065f46]">{p.price}</span>
+                    <Button className="bg-[#1a3c34] hover:bg-[#065f46] rounded-full px-6 text-sm">
+                      Buy
                     </Button>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-32 bg-white">
-          <div className="max-w-3xl mx-auto px-4 text-center">
-            <h2 className="text-4xl font-display font-bold mb-8">Get in Touch</h2>
-            <p className="text-lg text-slate-600 mb-12">Interested in our products or partnership? We'd love to hear from you.</p>
-            <div className="bg-[#f8fafc] p-10 rounded-3xl border border-slate-100">
-              <p className="text-2xl font-bold text-[#065f46] mb-2">info@prawali.com</p>
-              <p className="text-slate-500">Operational in Punjab & Bihar, India</p>
-            </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </main>
-      
       <Footer />
-      <ChatWidget />
     </div>
   );
 }
