@@ -1,25 +1,19 @@
-import { pgTable, text, serial, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const leads = pgTable("leads", {
+// Prawali Orders Table
+export const orders = pgTable("orders", {
   id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  phone: varchar("phone", { length: 15 }).notNull(),
-  location: text("location").notNull(), // Punjab or Bihar
-  source: text("source").default("web"), // 'web' or 'voice'
+  customerName: text("customer_name").notNull(),
+  address: text("address").notNull(),
+  phoneNumber: text("phone_number").notNull(),
+  productName: text("product_name").notNull(), 
+  quantity: integer("quantity").notNull().default(1),
+  status: text("status").notNull().default("Pending"), 
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const insertLeadSchema = createInsertSchema(leads).omit({ 
-  id: true, 
-  createdAt: true 
-}).extend({
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  location: z.enum(["Punjab", "Bihar"], {
-    errorMap: () => ({ message: "Location must be either Punjab or Bihar" })
-  })
-});
-
-export type Lead = typeof leads.$inferSelect;
-export type InsertLead = z.infer<typeof insertLeadSchema>;
+export const insertOrderSchema = createInsertSchema(orders);
+export type Order = typeof orders.$inferSelect;
+export type InsertOrder = z.infer<typeof insertOrderSchema>;

@@ -11,8 +11,13 @@ import { useEffect } from "react";
 function Router() {
   return (
     <Switch>
+      {/* मुख्य वेबसाइट का रास्ता */}
       <Route path="/" component={Home} />
-      <Route path="/admin-prawali" component={Admin} />
+      
+      {/* आपका एडमिन पेज अब यहाँ से खुलेगा */}
+      <Route path="/admin" component={Admin} />
+      
+      {/* अगर गलत लिंक डालें तो 404 दिखेगा */}
       <Route component={NotFound} />
     </Switch>
   );
@@ -20,7 +25,7 @@ function Router() {
 
 function App() {
   useEffect(() => {
-    // Calling AI ko window par set karna taaki Home page se access ho sake
+    // Riley AI calling logic
     window.startRileyCall = () => {
       if (window.vapiSDK) {
         const vapi = new window.vapiSDK.default(
