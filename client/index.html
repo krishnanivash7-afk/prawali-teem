@@ -1,20 +1,35 @@
-<script>
-  // पेज और AI SDK लोड होने का इंतज़ार करें
-  window.addEventListener('load', function() {
-    try {
-      // आपकी Public Key
-      const vapi = new Vapi('c19b7909-74f0-459f-a23c-ff4cf3d9cbe6');
-      const btn = document.getElementById('riley-ai-btn');
-
-      if (btn) {
-        btn.onclick = () => {
-          console.log("Riley AI शुरू हो रहा है...");
-          // आपकी Assistant ID
-          vapi.start('517b20fd-d5b4-40b6-a9f8-57f6d1580f1c'); 
-        };
-      }
-    } catch (err) {
-      console.error("Vapi लोड नहीं हो पाया:", err);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-sdk@latest/dist/vapi-sdk.js"></script>
+  <style>
+    #riley-ai-btn {
+      position: fixed; bottom: 20px; right: 20px;
+      width: 60px; height: 60px; background: #007bff;
+      color: white; border-radius: 50%; border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer; z-index: 10000; font-size: 24px;
     }
-  });
-</script>
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  
+  <button id="riley-ai-btn">💬</button>
+
+  <script>
+    window.addEventListener('load', function() {
+      try {
+        const vapi = new Vapi('c19b7909-74f0-459f-a23c-ff4cf3d9cbe6');
+        document.getElementById('riley-ai-btn').onclick = () => {
+          vapi.start('517b20fd-d5b4-40b6-a9f8-57f6d1580f1c');
+        };
+      } catch (e) { console.error(e); }
+    });
+  </script>
+</body>
+</html>
