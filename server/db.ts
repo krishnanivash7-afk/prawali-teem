@@ -9,9 +9,7 @@ if (!process.env.DATABASE_URL) {
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false // Neon Database के लिए यह ज़रूरी है
-  }
+  ssl: true, // SSL जोड़ना ज़रूरी है Neon के लिए
 });
 
 export const db = drizzle(pool, { schema });
