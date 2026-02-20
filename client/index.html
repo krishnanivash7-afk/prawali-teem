@@ -2,24 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-sdk@latest/dist/vapi-sdk.js"></script>
+  <style>
+    /* Riley AI के लिए एक सुंदर नीला बटन */
+    #riley-ai-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 9999;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #riley-ai-btn:hover { background-color: #0056b3; }
+  </style>
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
+  <button id="riley-ai-btn">💬</button>
+
   <script>
-    // आपकी Public Key यहाँ जोड़ दी गई है
-    const vapi = new Vapi('c19b7909-74f0-459f-a23c-ff4cf3d9cbe6'); 
-    
-    // यह लाइन AI बटन को स्क्रीन पर दिखाएगी
-    vapi.displayWidget(); 
+    // आपकी Public Key
+    const vapi = new Vapi('c19b7909-74f0-459f-a23c-ff4cf3d9cbe6');
+
+    // बटन क्लिक होने पर Riley AI शुरू होगा
+    document.getElementById('riley-ai-btn').addEventListener('click', () => {
+      // आपकी Assistant ID
+      vapi.start('517b20fd-d5b4-40b6-a9f8-57f6d1580f1c'); 
+    });
   </script>
 </body>
 </html>
