@@ -1,42 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --mint-light: #f0fff4; /* हल्का मिंट ग्रीन */
-  --peach-light: #fff5f5; /* हल्का पीच */
-  --emerald-deep: #065f46;
+  --emerald-600: #059669; /* प्रीमियम पन्ना हरा */
+  --emerald-900: #064e3b;
+  --mint-light: #f0fdf4;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  @apply bg-[#fafaf9] text-slate-900 antialiased;
+  @apply font-sans antialiased text-slate-900;
+  background-color: var(--mint-light);
 }
 
-.glass-panel {
-  @apply bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm;
+/* लोगो और बटन्स का प्रीमियम फिनिश */
+.prawali-logo {
+  filter: drop-shadow(0 4px 6px rgba(5, 150, 105, 0.1));
 }
 
-/* प्रोडक्ट ग्रिड को साइड-बाय-साइड रखने के लिए */
-.product-grid-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  @apply py-10;
-}
-
-/* प्रीमियम कार्ड डिज़ाइन */
-.premium-card {
-  @apply bg-white rounded-[2rem] p-6 shadow-md transition-all duration-500 border border-emerald-50;
-}
-
-.premium-card:hover {
-  @apply -translate-y-4 shadow-2xl border-emerald-200;
-}
-
-/* बटन का नया 'Picky Green' कलर */
-.premium-buy-btn {
-  @apply bg-emerald-600 text-white px-8 py-3 rounded-full font-bold hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-200;
+.btn-emerald {
+  @apply bg-emerald-700 text-white shadow-lg hover:bg-emerald-800 transition-all active:scale-95;
 }
