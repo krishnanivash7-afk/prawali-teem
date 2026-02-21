@@ -1,37 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Premium Deep Green Palette */
-  --background: 0 0% 100%;      /* Pure White */
-  --foreground: 161 94% 15%;     /* Deep Forest Green #065f46 */
-  
-  --primary: 161 94% 20%;        /* Deep Green for main elements */
-  --primary-foreground: 0 0% 100%;
-  
-  --secondary: 161 94% 98%;      /* Very Light Green wash */
-  --secondary-foreground: 161 94% 15%;
-  
-  --muted: 161 10% 96%;          /* Neutral Light Grey */
-  --muted-foreground: 161 20% 40%;
-  
-  --accent: 161 94% 15%;         /* Deep Green accent */
-  --accent-foreground: 0 0% 100%;
-  
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-
-  --border: 161 94% 15% / 0.1;
-  --input: 161 94% 15% / 0.1;
-  --ring: 161 94% 15%;
-
-  --radius: 0.5rem;
-  
+  --background: 0 0% 100%;
+  --foreground: 161 94% 15%; /* Deep Forest Green */
+  --primary: 161 94% 20%;
+  --radius: 1rem;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-display: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {
@@ -39,99 +17,60 @@
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    @apply font-bold tracking-tight;
-  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
-  }
-  
-  .eco-gradient {
-    background: linear-gradient(135deg, hsl(146 55% 45%), hsl(164 45% 25%));
-  }
-  
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(146 55% 45%), hsl(164 45% 25%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* --- प्रीमियम प्रोडक्ट सेक्शन --- */
+.product-grid-wrapper {
+  display: grid;
+  /* यह लाइन पक्का करेगी कि फोटो साइड में न आए बल्कि 4 एक लाइन में दिखें */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 30px;
+  padding: 50px 5%;
+  justify-items: center;
+  background: #fdfdfd;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
-}
-/* प्रोडक्ट सेक्शन को सजाने के लिए */
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 40px 20px;
-  background-color: #f8f9fa;
-}
-
-/* हर प्रोडक्ट कार्ड का प्रीमियम लुक */
-.product-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px); /* कांच जैसा इफ़ेक्ट (Glassmorphism) */
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 15px;
-  width: 280px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease; /* एनिमेशन की रफ़्तार */
+.premium-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px); /* Glassmorphism Effect */
+  border-radius: 24px;
+  border: 1px solid rgba(6, 95, 70, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
 }
 
-/* एनिमेशन: जब माउस प्रोडक्ट पर जाएगा */
-.product-card:hover {
-  transform: translateY(-15px) scale(1.03); /* कार्ड ऊपर उठेगा */
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-  border-color: #007bff; /* हल्का नीला बॉर्डर */
+.premium-card:hover {
+  transform: translateY(-20px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(6, 95, 70, 0.15);
+  border-color: hsl(161 94% 20%);
 }
 
-/* प्रोडक्ट इमेज का स्टाइल */
-.product-image {
+.premium-card img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 15px;
+  border-radius: 18px;
+  margin-bottom: 20px;
 }
 
-/* बटन का स्टाइल */
-.buy-button {
-  background: linear-gradient(135deg, #007bff, #00c6ff);
+/* बटन अब ग्रीन थीम में है (पुरानी नीली फोटो/स्टाइल हट गया) */
+.premium-buy-btn {
+  background: linear-gradient(135deg, #065f46, #059669);
   color: white;
   border: none;
-  padding: 10px 25px;
-  border-radius: 30px;
-  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s;
+  width: 100%;
 }
 
-.buy-button:hover {
-  letter-spacing: 1px;
-  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+.premium-buy-btn:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
 }
