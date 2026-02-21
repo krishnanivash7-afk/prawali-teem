@@ -1,7 +1,17 @@
-node_modules
-dist
+# Secrets
+.env
+.env.local
+
+# Dependencies
+node_modules/
+dist/
+build/
+
+# IDE & OS Files
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+.vscode/
+.replit
+replit.md
+
+# Vercel
 .vercel
