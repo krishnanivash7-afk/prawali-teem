@@ -6,7 +6,7 @@ function App() {
   const [password, setPassword] = useState('');
   const [chatOpen, setChatOpen] = useState(false);
   const [message, setMessage] = useState('');
-  const [orderCount, setOrderCount] = useState(11); // Last recorded orders
+  const [orderCount, setOrderCount] = useState(11); 
   const [orderMessage, setOrderMessage] = useState('');
 
   const [productList, setProductList] = useState([
@@ -18,11 +18,10 @@ function App() {
 
   const [newProduct, setNewProduct] = useState({ name: '', price: '', img: '/assets/logo.png.jpeg' });
 
-  // 1. INP Issue Fix: Using a toast instead of alert()
   const handleOrder = (productName: string) => {
     setOrderCount(prev => prev + 1);
     setOrderMessage(`${productName} added to orders!`);
-    setTimeout(() => setOrderMessage(''), 3000); // Auto-hide after 3 seconds
+    setTimeout(() => setOrderMessage(''), 3000);
   };
 
   const addProduct = () => {
@@ -34,7 +33,6 @@ function App() {
 
   const removeProduct = (id: number) => setProductList(productList.filter(p => p.id !== id));
 
-  // Admin Login View with Password
   if (view === 'login') return (
     <div className="min-h-screen bg-emerald-50/20 flex items-center justify-center p-6">
       <div className="bg-white p-10 rounded-[3rem] shadow-2xl max-w-md w-full text-center border border-emerald-100">
@@ -89,14 +87,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#fdfdfc] font-sans overflow-x-hidden">
-      {/* Toast Message for Order Fix */}
       {orderMessage && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[300] bg-emerald-900 text-white px-8 py-3 rounded-full font-bold shadow-2xl animate-bounce">
           {orderMessage}
         </div>
       )}
 
-      <nav className="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-emerald-50 py-3 px-6 flex justify-between items-center">
+      {/* NEW: Solid White Sticky Navbar for clean Logo look */}
+      <nav className="sticky top-0 z-[100] w-full bg-white shadow-sm border-b border-emerald-100 py-3 px-6 flex justify-between items-center">
         <a href="#home"><img src="/assets/logo.png.jpeg" alt="Logo" className="h-10 md:h-16 w-auto object-contain" /></a>
         <div className="flex gap-6 items-center">
           <div className="hidden lg:flex gap-10 font-bold text-emerald-950 mr-6">
@@ -107,7 +105,8 @@ function App() {
         </div>
       </nav>
 
-      <header id="home" className="relative h-screen flex items-center justify-center">
+      {/* NEW: Wider (Cinematic) Video Section - h-[75vh] */}
+      <header id="home" className="relative h-[75vh] flex items-center justify-center overflow-hidden">
         <video autoPlay muted loop playsInline className="absolute w-full h-full object-cover">
           <source src="/assets/hero-video.mp4" type="video/mp4" />
         </video>
@@ -118,7 +117,6 @@ function App() {
         <div className="absolute inset-0 bg-black/30 z-10"></div>
       </header>
 
-      {/* Startly & Prawali Brand Story */}
       <section id="story" className="py-24 px-6 bg-gradient-to-br from-[#f7fefc] to-[#fff5f5]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div className="bg-white p-14 rounded-[3.5rem] shadow-2xl border border-emerald-50">
