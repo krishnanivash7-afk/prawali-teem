@@ -80,3 +80,58 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary));
 }
+/* प्रोडक्ट सेक्शन को सजाने के लिए */
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+}
+
+/* हर प्रोडक्ट कार्ड का प्रीमियम लुक */
+.product-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px); /* कांच जैसा इफ़ेक्ट (Glassmorphism) */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease; /* एनिमेशन की रफ़्तार */
+  text-align: center;
+}
+
+/* एनिमेशन: जब माउस प्रोडक्ट पर जाएगा */
+.product-card:hover {
+  transform: translateY(-15px) scale(1.03); /* कार्ड ऊपर उठेगा */
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+  border-color: #007bff; /* हल्का नीला बॉर्डर */
+}
+
+/* प्रोडक्ट इमेज का स्टाइल */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+/* बटन का स्टाइल */
+.buy-button {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-button:hover {
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
